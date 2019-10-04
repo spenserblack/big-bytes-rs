@@ -1,17 +1,17 @@
 [package]
-name = "big-unit"
+name = "big-bytes"
 version = "0.0.1"
 authors = ["Spenser Black <spenserblack01@gmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
-description = "Converts floats the the largest possible unit >1"
+description = "Converts byte floats the the largest possible unit >1"
 readme = "README.md"
 keywords = ["conversion", "bytes"]
-repository = "https://github.com/spenserblack/big-unit-rs"
+repository = "https://github.com/spenserblack/big-bytes-rs"
 
 [dependencies]
 
 [badges]
-is-it-maintained-issue-resolution = { repository = "spenserblack/big-unit-rs" }
-is-it-maintained-open-issues = { repository = "spenserblack/big-unit-rs" }
+is-it-maintained-issue-resolution = { repository = "spenserblack/big-bytes-rs" }
+is-it-maintained-open-issues = { repository = "spenserblack/big-bytes-rs" }
 maintenance = { status = "passively-maintained" }

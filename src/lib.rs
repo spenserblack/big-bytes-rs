@@ -1,22 +1,15 @@
-pub trait LargestUnit {
-    fn largest_unit(&self, precision: u8, unit: &str) -> String;
+pub const AVAILABLE_UNIT_SIZES: [char;4] = ['K', 'M', 'G', 'T'];
+
+pub trait LargestByteUnit {
     fn largest_byte_unit(&self, precision: u8) -> String;
 }
 
-impl LargestUnit for f32 {
-    fn largest_unit(&self, precision: u8, unit: &str) -> String {
-        String::new()
-    }
-
+impl LargestByteUnit for f32 {
     fn largest_byte_unit(&self, precision: u8) -> String {
         String::new()
     }
 }
-impl LargestUnit for f64 {
-    fn largest_unit(&self, precision: u8, unit: &str) -> String {
-        String::new()
-    }
-
+impl LargestByteUnit for f64 {
     fn largest_byte_unit(&self, precision: u8) -> String {
         String::new()
     }
@@ -25,11 +18,6 @@ impl LargestUnit for f64 {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn kilometer_test() {
-        assert_eq!(1_129.0.largest_unit(2, "m"), "1.13 km");
-    }
 
     #[test]
     fn gibibyte_test() {
