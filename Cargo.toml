@@ -1,10 +1,17 @@
 [package]
-name = "template-rust-repo"
+name = "big-unit"
 version = "0.0.1"
-authors = ["First Last <user@email>"]
+authors = ["Spenser Black <spenserblack01@gmail.com>"]
 edition = "2018"
 license = "MIT OR Apache-2.0"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Converts floats the the largest possible unit >1"
+readme = "README.md"
+keywords = ["conversion", "bytes"]
+repository = "https://github.com/spenserblack/big-unit-rs"
 
 [dependencies]
+
+[badges]
+is-it-maintained-issue-resolution = { repository = "spenserblack/big-unit-rs" }
+is-it-maintained-open-issues = { repository = "spenserblack/big-unit-rs" }
+maintenance = { status = "passively-maintained" }
