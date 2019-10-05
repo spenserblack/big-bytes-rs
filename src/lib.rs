@@ -14,10 +14,6 @@ impl LargestByteUnit for f32 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         let mut value: f32 = *self;
         let mut counter: usize = 0;
-        // while value >= 1024.0 && counter + 1 < AVAILABLE_UNIT_SIZES.len() {
-        //     value /= 1024.0;
-        //     counter += 1;
-        // }
         let (counter, value): (usize, f32) = loop {
             if counter >= AVAILABLE_UNIT_SIZES.len() {
                 break (counter, value);
@@ -40,10 +36,6 @@ impl LargestByteUnit for f64 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         let mut value: f64 = *self;
         let mut counter: usize = 0;
-        // while value >= 1024.0 && counter + 1 < AVAILABLE_UNIT_SIZES.len() {
-        //     value /= 1024.0;
-        //     counter += 1;
-        // }
         let (counter, value): (usize, f64) = loop {
             if counter + 1 >= AVAILABLE_UNIT_SIZES.len() {
                 break (counter, value);
