@@ -1,7 +1,7 @@
 # big-bytes
 [![GitHub Release Date](https://img.shields.io/github/release-date/spenserblack/big-bytes-rs)](https://github.com/spenserblack/big-bytes-rs/releases/latest)
 
-Converts float to the largest possible multiple of the byte unit
+Converts a number to the largest possible multiple of the byte unit
 
 ## Example
 
