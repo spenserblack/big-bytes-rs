@@ -6,7 +6,7 @@ Converts float to the largest possible multiple of the byte unit
 ## Example
 
 ```rust
-use big_bytes::LargestByteUnit;
+use big_bytes::BigByte;
 
 let bytes = 2.456 * 1024_f32.powi(3);
 

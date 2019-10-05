@@ -3,7 +3,7 @@
 //! # Example
 //!
 //! ```
-//! use big_bytes::LargestByteUnit;
+//! use big_bytes::BigByte;
 //!
 //! let bytes = 2.456 * 1024_f32.powi(3);
 //!
@@ -26,12 +26,12 @@ pub const AVAILABLE_UNIT_SIZES: [Option<char>;9] = [
 ];
 
 /// Makes a type representable as a byte count.
-pub trait LargestByteUnit {
+pub trait BigByte {
     /// Represents `self` as a byte count.
     fn largest_byte_unit(&self, precision: usize) -> String;
 }
 
-impl LargestByteUnit for f32 {
+impl BigByte for f32 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         let mut value: f32 = *self;
         let mut counter: usize = 0;
@@ -53,7 +53,7 @@ impl LargestByteUnit for f32 {
         }
     }
 }
-impl LargestByteUnit for f64 {
+impl BigByte for f64 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         let mut value: f64 = *self;
         let mut counter: usize = 0;
@@ -76,37 +76,37 @@ impl LargestByteUnit for f64 {
     }
 }
 
-impl LargestByteUnit for u8 {
+impl BigByte for u8 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f32).largest_byte_unit(precision)
     }
 }
 
-impl LargestByteUnit for u16 {
+impl BigByte for u16 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f32).largest_byte_unit(precision)
     }
 }
 
-impl LargestByteUnit for u32 {
+impl BigByte for u32 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f32).largest_byte_unit(precision)
     }
 }
 
-impl LargestByteUnit for u64 {
+impl BigByte for u64 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f32).largest_byte_unit(precision)
     }
 }
 
-impl LargestByteUnit for u128 {
+impl BigByte for u128 {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f64).largest_byte_unit(precision)
     }
 }
 
-impl LargestByteUnit for usize {
+impl BigByte for usize {
     fn largest_byte_unit(&self, precision: usize) -> String {
         (*self as f64).largest_byte_unit(precision)
     }
