@@ -7,7 +7,7 @@
 //!
 //! let bytes = 2.456 * 1024_f32.powi(3);
 //!
-//! assert_eq!("2.46 GiB", bytes.largest_byte_unit(2));
+//! assert_eq!("2.46 GiB", bytes.big_byte(2));
 //! ```
 
 /// Available multiples of the byte unit.
@@ -28,11 +28,11 @@ pub const AVAILABLE_UNIT_SIZES: [Option<char>;9] = [
 /// Makes a type representable as a byte count.
 pub trait BigByte {
     /// Represents `self` as a byte count.
-    fn largest_byte_unit(&self, precision: usize) -> String;
+    fn big_byte(&self, precision: usize) -> String;
 }
 
 impl BigByte for f32 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
+    fn big_byte(&self, precision: usize) -> String {
         let mut value: f32 = *self;
         let mut counter: usize = 0;
         let (counter, value): (usize, f32) = loop {
@@ -54,7 +54,7 @@ impl BigByte for f32 {
     }
 }
 impl BigByte for f64 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
+    fn big_byte(&self, precision: usize) -> String {
         let mut value: f64 = *self;
         let mut counter: usize = 0;
         let (counter, value): (usize, f64) = loop {
@@ -77,38 +77,38 @@ impl BigByte for f64 {
 }
 
 impl BigByte for u8 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f32).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f32).big_byte(precision)
     }
 }
 
 impl BigByte for u16 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f32).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f32).big_byte(precision)
     }
 }
 
 impl BigByte for u32 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f32).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f32).big_byte(precision)
     }
 }
 
 impl BigByte for u64 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f32).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f32).big_byte(precision)
     }
 }
 
 impl BigByte for u128 {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f64).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f64).big_byte(precision)
     }
 }
 
 impl BigByte for usize {
-    fn largest_byte_unit(&self, precision: usize) -> String {
-        (*self as f64).largest_byte_unit(precision)
+    fn big_byte(&self, precision: usize) -> String {
+        (*self as f64).big_byte(precision)
     }
 }
 
@@ -118,23 +118,23 @@ mod tests {
 
     #[test]
     fn byte_test() {
-        assert_eq!(2.001.largest_byte_unit(3), "2.001 B");
+        assert_eq!(2.001.big_byte(3), "2.001 B");
     }
 
     #[test]
     #[allow(non_snake_case)]
     fn u16_two_KiB_test() {
-        assert_eq!(2048_u16.largest_byte_unit(0), "2 KiB");
+        assert_eq!(2048_u16.big_byte(0), "2 KiB");
     }
 
     #[test]
     fn gibibyte_test() {
-        assert_eq!(2_635_000_987.0.largest_byte_unit(1), "2.5 GiB");
+        assert_eq!(2_635_000_987.0.big_byte(1), "2.5 GiB");
     }
 
     #[test]
     fn too_big_test() {
         let bytes = 2_635.0 * 1024_f64.powi(8);
-        assert_eq!(bytes.largest_byte_unit(1), "2635.0 YiB");
+        assert_eq!(bytes.big_byte(1), "2635.0 YiB");
     }
 }
