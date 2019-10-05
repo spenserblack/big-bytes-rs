@@ -76,6 +76,42 @@ impl LargestByteUnit for f64 {
     }
 }
 
+impl LargestByteUnit for u8 {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f32).largest_byte_unit(precision)
+    }
+}
+
+impl LargestByteUnit for u16 {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f32).largest_byte_unit(precision)
+    }
+}
+
+impl LargestByteUnit for u32 {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f32).largest_byte_unit(precision)
+    }
+}
+
+impl LargestByteUnit for u64 {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f32).largest_byte_unit(precision)
+    }
+}
+
+impl LargestByteUnit for u128 {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f64).largest_byte_unit(precision)
+    }
+}
+
+impl LargestByteUnit for usize {
+    fn largest_byte_unit(&self, precision: usize) -> String {
+        (*self as f64).largest_byte_unit(precision)
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -83,6 +119,12 @@ mod tests {
     #[test]
     fn byte_test() {
         assert_eq!(2.001.largest_byte_unit(3), "2.001 B");
+    }
+
+    #[test]
+    #[allow(non_snake_case)]
+    fn u16_two_KiB_test() {
+        assert_eq!(2048_u16.largest_byte_unit(0), "2 KiB");
     }
 
     #[test]
