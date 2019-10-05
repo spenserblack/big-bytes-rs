@@ -1,9 +1,13 @@
-pub const AVAILABLE_UNIT_SIZES: [Option<char>;5] = [
+pub const AVAILABLE_UNIT_SIZES: [Option<char>;9] = [
     None,
     Some('K'),
     Some('M'),
     Some('G'),
     Some('T'),
+    Some('P'),
+    Some('E'),
+    Some('Z'),
+    Some('Y'),
 ];
 
 pub trait LargestByteUnit {
@@ -71,6 +75,7 @@ mod tests {
 
     #[test]
     fn too_big_test() {
-        assert_eq!(2_635_000_987_000_000.0.largest_byte_unit(1), "2396.5 TiB");
+        let bytes = 2_635.0 * 1024_f64.powi(8);
+        assert_eq!(bytes.largest_byte_unit(1), "2635.0 YiB");
     }
 }
