@@ -1,4 +1,4 @@
-# big-bytes-rs
+# big-bytes
 Converts float to the largest possible multiple of the byte unit
 
 ## Example
