@@ -1,3 +1,18 @@
+//! Helps represent bytes with the largest possible mutliple of the byte unit.
+//!
+//! # Example
+//!
+//! ```
+//! use big_bytes::LargestByteUnit;
+//!
+//! let bytes = 2.456 * 1024_f32.powi(3);
+//!
+//! assert_eq!("2.46 GiB", bytes.largest_byte_unit(2));
+//! ```
+
+/// Available multiples of the byte unit.
+///
+/// *`'K'` Represents __Kibi__, not __Kilo__*.
 pub const AVAILABLE_UNIT_SIZES: [Option<char>;9] = [
     None,
     Some('K'),
@@ -10,7 +25,9 @@ pub const AVAILABLE_UNIT_SIZES: [Option<char>;9] = [
     Some('Y'),
 ];
 
+/// Makes a type representable as a byte count.
 pub trait LargestByteUnit {
+    /// Represents `self` as a byte count.
     fn largest_byte_unit(&self, precision: usize) -> String;
 }
 
